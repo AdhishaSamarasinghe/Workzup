@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Workzup — Home</title>
+  <title>Contact — Workzup</title>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
@@ -30,20 +30,36 @@
   </header>
 
   <main>
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-copy reveal">
-          <h1>Workzup — Find One-Day Work, Fast</h1>
-          <p class="lead">Connects job seekers with employers who need reliable short-term workers — same-day hires, simple bookings.</p>
-          <div class="hero-ctas">
-            <a class="btn primary" href="features.html">Find Work</a>
-            <a class="btn ghost" href="contact.html">Post a Job</a>
+    <section class="section contact">
+      <div class="container">
+        <h2 class="section-title reveal">Contact</h2>
+        <div class="contact-grid">
+          <div class="card contact-info reveal">
+            <h4>Get in touch</h4>
+            <p>For partnerships, support, or academic queries, send us a message.</p>
+            <ul class="meta">
+              <li><strong>Email:</strong> hello@workzup.example</li>
+              <li><strong>Phone:</strong> +1 555 123 4567</li>
+            </ul>
           </div>
-        </div>
-        <div class="hero-media reveal">
-          <div class="mockup">
-            <img src="https://via.placeholder.com/520x360.png?text=Workzup+Preview" alt="Workzup preview">
-          </div>
+          <form id="contactForm" class="card contact-form reveal" novalidate>
+            <label>
+              <span>Name</span>
+              <input type="text" name="name" required>
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" required>
+            </label>
+            <label>
+              <span>Message</span>
+              <textarea name="message" rows="6" required></textarea>
+            </label>
+            <div class="form-actions">
+              <button class="btn primary" type="submit">Send Message</button>
+              <div id="formStatus" class="form-status" aria-live="polite"></div>
+            </div>
+          </form>
         </div>
       </div>
     </section>
