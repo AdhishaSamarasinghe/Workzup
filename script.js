@@ -73,29 +73,65 @@ window.addEventListener('scroll', ()=>{
 });
 backToTop.addEventListener('click', ()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-// Contact form handling (no backend) — show simple success message
+// Contact form handling: if a data-endpoint is provided on the form (e.g. Formspree), POST to it,
+// otherwise fall back to the demo success flow.
 const contactForm = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
-if(contactForm){
-  contactForm.addEventListener('submit', (e)=>{
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const form = new FormData(contactForm);
-    const name = form.get('name')?.toString().trim();
-    const email = form.get('email')?.toString().trim();
-    const message = form.get('message')?.toString().trim();
-    if(!name || !email || !message){
-      formStatus.textContent = 'Please complete all fields.';
-      formStatus.style.color = '#e11d48';
+    const fd = new FormData(contactForm);
+    const name = fd.get('name')?.toString().trim();
+    const email = fd.get('email')?.toString().trim();
+    const message = fd.get('message')?.toString().trim();
+    if (!name || !email || !message) {
+      formStatus.textContent = 'Please complete all required fields.';
+      formStatus.classList.remove('success');
+      formStatus.classList.add('error');
       return;
     }
+
+    const endpoint = (contactForm.dataset.endpoint || '').trim();
     contactForm.querySelector('button').disabled = true;
     formStatus.textContent = 'Sending...';
-    setTimeout(()=>{
-      formStatus.textContent = 'Thanks, your message was sent (demo).';
-      formStatus.style.color = 'green';
-      contactForm.reset();
+
+    // If user left placeholder or empty, use demo fallback
+    if (!endpoint || endpoint.startsWith('REPLACE_WITH')) {
+      setTimeout(() => {
+        formStatus.textContent = 'Thanks — your message was sent (demo).';
+        formStatus.classList.remove('error');
+        formStatus.classList.add('success');
+        contactForm.reset();
+        contactForm.querySelector('button').disabled = false;
+      }, 900);
+      return;
+    }
+
+    // Attempt to POST to the provided endpoint (Formspree-like API)
+    try {
+      const resp = await fetch(endpoint, {
+        method: 'POST',
+        body: fd,
+        headers: { Accept: 'application/json' }
+      });
+      if (resp.ok) {
+        formStatus.textContent = 'Thanks — your message was sent.';
+        formStatus.classList.remove('error');
+        formStatus.classList.add('success');
+        contactForm.reset();
+      } else {
+        const data = await resp.json().catch(()=>null);
+        formStatus.textContent = (data && data.error) ? `Error: ${data.error}` : 'Submission failed — please try again later.';
+        formStatus.classList.remove('success');
+        formStatus.classList.add('error');
+      }
+    } catch (err) {
+      formStatus.textContent = 'Network error — please try again later.';
+      formStatus.classList.remove('success');
+      formStatus.classList.add('error');
+    } finally {
       contactForm.querySelector('button').disabled = false;
-    },900);
+    }
   });
 }
 // Waitlist bar

@@ -36,25 +36,65 @@
         <div class="contact-grid">
           <div class="card contact-info reveal">
             <h4>Get in touch</h4>
-            <p>For partnerships, support, or academic queries, send us a message.</p>
+            <p>For partnerships, support, or academic queries, send us a message — we usually reply within 1–2 business days.</p>
             <ul class="meta">
-              <li><strong>Email:</strong> hello@workzup.example</li>
-              <li><strong>Phone:</strong> +94 072 371 345</li>
+              <li><strong>Email:</strong> <a href="mailto:hello@workzup.example">hello@workzup.example</a></li>
+              <li><strong>Phone:</strong> <a href="tel:+9472371345">+94 72 371 345</a></li>
+              <li><strong>Address:</strong> 45 Tech Lane, Colombo, Sri Lanka</li>
+              <li><strong>Office Hours:</strong> Mon–Fri, 9:00 — 18:00 (GMT+5:30)</li>
             </ul>
+
+            <div class="contact-box">
+              <h5>Support</h5>
+              <p>For bug reports or urgent platform issues, include "URGENT" in the subject line so we can prioritize it.</p>
+              <p class="small">You can also reach our support Slack at <code>@workzup-support</code> (invitation required).</p>
+            </div>
+
+            <div class="map-embed">
+              <iframe
+                title="Workzup office location"
+                src="https://www.google.com/maps?q=45+Tech+Lane,+Colombo,+Sri+Lanka&output=embed"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
           </div>
-          <form id="contactForm" class="card contact-form reveal" novalidate>
+
+          <form id="contactForm" class="card contact-form reveal" novalidate data-endpoint="REPLACE_WITH_FORMSPREE_ENDPOINT">
             <label>
               <span>Name</span>
-              <input type="text" name="name" required>
+              <input type="text" name="name" placeholder="Your full name" required>
             </label>
+
+            <label>
+              <span>Company (optional)</span>
+              <input type="text" name="company" placeholder="Company or organization">
+            </label>
+
             <label>
               <span>Email</span>
-              <input type="email" name="email" required>
+              <input type="email" name="email" placeholder="you@company.com" required>
             </label>
+
+            <label>
+              <span>Subject</span>
+              <select name="subject" required>
+                <option value="general">General inquiry</option>
+                <option value="partnership">Partnership</option>
+                <option value="support">Support / Bug report</option>
+                <option value="press">Press / Media</option>
+                <option value="other">Other</option>
+              </select>
+            </label>
+
             <label>
               <span>Message</span>
-              <textarea name="message" rows="6" required></textarea>
+              <textarea name="message" rows="6" placeholder="Tell us how we can help" required></textarea>
             </label>
+
+            <label class="checkbox-label">
+              <span>I agree to the processing of my data in accordance with the <a href="#">privacy policy</a>.</span>
+              <input type="checkbox" name="consent" required>
+            </label>
+
             <div class="form-actions">
               <button class="btn primary" type="submit">Send Message</button>
               <div id="formStatus" class="form-status" aria-live="polite"></div>

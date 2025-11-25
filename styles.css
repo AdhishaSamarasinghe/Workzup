@@ -699,17 +699,27 @@ main {
   grid-template-columns: 1fr 1fr;
 }
 
+.contact-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+}
+
 .contact-form label {
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.75rem;
   display: block;
 }
 .contact-form input,
-.contact-form textarea {
+.contact-form textarea,
+.contact-form select {
   width: 100%;
-  padding: 0.6rem;
-  border-radius: 8px;
+  padding: 0.7rem;
+  border-radius: 10px;
   border: 1px solid rgba(15, 23, 42, 0.06);
+  background: var(--card);
+  font-size: 0.95rem;
 }
+.contact-form textarea { min-height: 140px }
 
 .form-actions {
   display: flex;
@@ -720,6 +730,21 @@ main {
   color: var(--muted);
   font-size: 0.95rem;
 }
+
+/* Checkbox label */
+.checkbox-label{display:flex;gap:0.6rem;align-items:flex-start;font-size:0.95rem}
+.checkbox-label input[type="checkbox"]{margin-top:4px}
+
+/* Support/info box and map */
+.contact-box{background:linear-gradient(90deg,rgba(107,140,255,0.06),rgba(139,227,199,0.03));padding:0.8rem;border-radius:10px;margin-top:1rem}
+.contact-box h5{margin:0 0 0.45rem;font-size:1rem}
+.contact-box .small{font-size:0.85rem;color:var(--muted)}
+.map-embed{margin-top:1rem;border-radius:10px;overflow:hidden;border:1px solid rgba(15,23,42,0.04);box-shadow:0 8px 20px rgba(2,6,23,0.04)}
+.map-embed iframe{display:block;width:100%;height:280px;border:0}
+
+/* Small form status color helpers */
+.form-status.error{color:#e11d48}
+.form-status.success{color:green}
 
 /* ------------------------------------------------------------
    Footer
