@@ -841,3 +841,112 @@ main {
     transform: none !important;
   }
 }
+/* ------------------------------------------------------------
+   ABOUT PAGE
+------------------------------------------------------------ */
+
+/* Hero title */
+.about-title {
+  font-family: Poppins, Inter;
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.about-btn {
+  display: block;
+  margin: 0.5rem auto 0;
+}
+
+/* Two-column layout */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.about-card-left {
+  position: relative;
+  background: var(--accent-2);
+  color: #0f172a;
+  border-radius: var(--radius);
+  overflow: hidden;
+  padding-bottom: 130px;
+}
+
+.about-card-left h2 {
+  font-family: Poppins;
+  font-size: 1.4rem;
+  margin-bottom: 0.6rem;
+}
+
+.about-mascot {
+  width: 160px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+/* Collage */
+.collage-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.collage-grid img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 15px rgba(2,6,23,0.08);
+  transform: rotate(-2deg);
+}
+
+/* Text block */
+.about-text {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+.team-avatars {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 0.4rem;
+}
+
+.team-avatars img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(2,6,23,0.08);
+}
+
+.about-final {
+  text-align: center;
+  margin-top: 1rem;
+  color: var(--muted);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-mascot {
+    width: 120px;
+  }
+}
+
+@media (max-width: 600px) {
+  .collage-grid img {
+    height: 100px;
+  }
+}
