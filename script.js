@@ -1,3 +1,43 @@
+const words = [
+    "Hiring Made Easy", 
+    "Short-Term Work", 
+    "Same-Day Hires",
+    "Connects Talent"
+];
+
+const typingSpeed = 100; 
+const deletingSpeed = 50; 
+const delayBeforeDelete = 2000; 
+let wordIndex = 0; 
+let charIndex = 0; 
+let isDeleting = false; 
+const animatedTextElement = document.getElementById('animated-text');
+function typeEffect() {
+    const currentWord = words[wordIndex % words.length]; 
+    let speed = typingSpeed;
+    if (isDeleting) {
+        charIndex--;
+        speed = deletingSpeed;
+        animatedTextElement.textContent = currentWord.substring(0, charIndex);
+        if (charIndex === 0) {
+            isDeleting = false;
+            wordIndex++; 
+        }
+    } else {
+        charIndex++;
+        animatedTextElement.textContent = currentWord.substring(0, charIndex);
+        if (charIndex === currentWord.length) { 
+            speed = delayBeforeDelete; 
+            isDeleting = true;
+        }
+    }
+    setTimeout(typeEffect, speed);
+}
+document.addEventListener('DOMContentLoaded', () => {
+    typeEffect();
+});
+
+
 // Mobile nav toggle
 const navToggle = document.querySelector('.nav-toggle');
 const siteNav = document.querySelector('.site-nav');
@@ -58,8 +98,64 @@ if(contactForm){
     },900);
   });
 }
+// Waitlist bar
+const waitlistForm = document.getElementById('waitlistForm');
+const waitlistEmail = document.getElementById('waitlistEmail');
+const waitlistStatus = document.getElementById('waitlistStatus');
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+if(waitlistForm){
+    waitlistForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = waitlistEmail.value.trim();
+        waitlistStatus.textContent = '';
+        waitlistStatus.style.color = 'var(--muted)';
+        if (!email) {
+            waitlistStatus.textContent = 'Please enter an email address.';
+            waitlistStatus.style.color = '#e11d48'; 
+            waitlistEmail.focus();
+            return;
+        }
+        if (!emailRegex.test(email)) {
+            waitlistStatus.textContent = `Please include an '@' in the email address. '${email}' is missing an '@'.`;
+            waitlistStatus.style.color = 'orange'; 
+            waitlistEmail.focus();
+            return;
+        }
+        waitlistForm.querySelector('button').disabled = true;
+        waitlistStatus.textContent = 'Adding...';
+        setTimeout(() => {
+            waitlistStatus.textContent = '✅ Successfully added to the waitlist!';
+            waitlistStatus.style.color = 'green';
+            waitlistForm.reset();
+            waitlistForm.querySelector('button').disabled = false;
+        }, 1200);
+    });
+}
+
+
+//Key features
+(function revealOnScroll(){
+  const items = Array.from(document.querySelectorAll('[data-reveal]'));
+  if(!items.length) return;
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const el = entry.target;
+        const delay = parseInt(el.getAttribute('data-reveal-delay') || 0, 10);
+        setTimeout(()=> el.classList.add('is-visible'), delay);
+        obs.unobserve(el);
+      }
+    });
+  }, {threshold: 0.18});
+  items.forEach(i => obs.observe(i));
+})();
+
 
 // Small accessibility: focus outline visibility
 document.addEventListener('keyup', (e)=>{
   if(e.key === 'Tab') document.body.classList.add('show-focus');
 });
+
+
+
