@@ -1129,3 +1129,132 @@ main {
     height: 100px;
   }
 }
+
+/* ------------------------------------------------------------
+   FEATURE PAGE — UPGRADED PROFESSIONAL UI
+------------------------------------------------------------ */
+
+/* GENERAL */
+.section {
+  padding: 90px 0;
+}
+
+.section-title {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 60px;
+  text-align: center;
+  letter-spacing: -0.5px;
+  color: #1a1a1a;
+}
+
+/* GRID BASE */
+.features-grid,
+.routine-grid,
+.main-features-grid,
+.barriers-grid {
+  display: grid;
+  gap: 28px;
+}
+
+.features-grid {
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+}
+
+/* UNIVERSAL CARD STYLE */
+.feature-card,
+.routine-card,
+.main-feature-card,
+.barrier-card {
+  background: #ffffff;
+  padding: 28px;
+  border-radius: 12px;
+  border: 1px solid #e6e6e6;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  transition: all 0.25s ease;
+}
+
+.feature-card h4,
+.routine-card h4,
+.main-feature-card h4,
+.barrier-card h4 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #0f172a;
+}
+
+.feature-card p,
+.routine-card p,
+.main-feature-card p,
+.barrier-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #475569;
+}
+
+/* HOVER EFFECT (smooth premium-style) */
+.feature-card:hover,
+.routine-card:hover,
+.main-feature-card:hover,
+.barrier-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 32px rgba(0,0,0,0.12);
+  border-color: #3b82f6;
+}
+
+/* ROUTINE KILLERS GRID */
+.routine-grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* MAIN KEY FEATURES */
+.main-features-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.main-feature-card {
+  border-left: 5px solid #3b82f6;
+}
+
+/* REMOVING BARRIERS */
+.barriers-grid {
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+}
+
+/* REVEAL ANIMATION */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.9s cubic-bezier(0.15, 0.85, 0.35, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE TWEAKS */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+
+  .feature-card,
+  .routine-card,
+  .main-feature-card,
+  .barrier-card {
+    padding: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 70px 0;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+}
