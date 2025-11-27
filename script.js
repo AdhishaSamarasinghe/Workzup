@@ -67,11 +67,17 @@ document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
 // Back to top
 const backToTop = document.getElementById('backToTop');
-window.addEventListener('scroll', ()=>{
-  if(window.scrollY > 420) backToTop.style.display = 'block';
-  else backToTop.style.display = 'none';
-});
-backToTop.addEventListener('click', ()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+if (backToTop) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 420) backToTop.style.display = 'block';
+    else backToTop.style.display = 'none';
+  });
+
+  backToTop.addEventListener('click', () =>
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  );
+}
 
 // Contact form handling: if a data-endpoint is provided on the form (e.g. Formspree), POST to it,
 // otherwise fall back to the demo success flow.
@@ -169,11 +175,10 @@ if(waitlistForm){
     });
 }
 
-
-//Key features
 (function revealOnScroll(){
   const items = Array.from(document.querySelectorAll('[data-reveal]'));
   if(!items.length) return;
+
   const obs = new IntersectionObserver((entries)=>{
     entries.forEach(entry=>{
       if(entry.isIntersecting){
@@ -183,15 +188,83 @@ if(waitlistForm){
         obs.unobserve(el);
       }
     });
-  }, {threshold: 0.18});
+  }, {threshold: 0.05});
+
   items.forEach(i => obs.observe(i));
 })();
 
 
-// Small accessibility: focus outline visibility
-document.addEventListener('keyup', (e)=>{
-  if(e.key === 'Tab') document.body.classList.add('show-focus');
-});
 
+(function () {
+  const statsSection = document.getElementById('stats');
+  if (!statsSection) return;
 
+  function animateValue(el, target, duration = 1600) {
+    const startTime = performance.now();
+
+    function update(now) {
+      if (el.dataset.animating !== 'true') {
+        el.textContent = '0';
+        return;
+      }
+
+      const progress = Math.min((now - startTime) / duration, 1);
+      el.textContent = Math.floor(progress * target).toLocaleString('en-US');
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        el.textContent = target.toLocaleString('en-US');
+      }
+    }
+
+    requestAnimationFrame(update);
+  }
+
+  function startStats() {
+    const numbers = statsSection.querySelectorAll('.stat-number');
+    const bars = statsSection.querySelectorAll('.progress-bar');
+
+    numbers.forEach(num => {
+      const target = parseInt(num.dataset.target, 10) || 0;
+      num.dataset.animating = 'true';
+      animateValue(num, target);
+    });
+
+    bars.forEach(bar => {
+      const width = parseInt(bar.dataset.width, 10) || 0;
+      bar.style.transition = 'none';
+      bar.style.width = '0%';
+      void bar.offsetWidth;
+      bar.style.transition = 'width 1.5s ease-out';
+      bar.style.width = width + '%';
+    });
+  }
+  function resetStats() {
+    const numbers = statsSection.querySelectorAll('.stat-number');
+    const bars = statsSection.querySelectorAll('.progress-bar');
+
+    numbers.forEach(num => {
+      num.dataset.animating = 'false';
+      num.textContent = '0';
+    });
+
+    bars.forEach(bar => {
+      bar.style.width = '0%';
+    });
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.target !== statsSection) return;
+
+      if (entry.isIntersecting) {
+        startStats();
+      } else {
+        resetStats();
+      }
+    });
+  }, { threshold: 0.4 });
+
+  observer.observe(statsSection);
+})();
 
