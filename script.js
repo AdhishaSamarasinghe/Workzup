@@ -164,14 +164,24 @@ if(waitlistForm){
             waitlistEmail.focus();
             return;
         }
-        waitlistForm.querySelector('button').disabled = true;
-        waitlistStatus.textContent = 'Adding...';
-        setTimeout(() => {
-            waitlistStatus.textContent = '✅ Successfully added to the waitlist!';
-            waitlistStatus.style.color = 'green';
+            waitlistStatus.textContent = 'Successfully joined, check your Email';
+            waitlistStatus.style.color = 'var(--muted)';
+            waitlistStatus.classList.add('waitlist-fade');
+
+           
+            setTimeout(() => {
+                waitlistStatus.classList.add('hide');
+            }, 5000);
+
             waitlistForm.reset();
             waitlistForm.querySelector('button').disabled = false;
-        }, 1200);
+
+      
+            setTimeout(() => {
+                waitlistStatus.textContent = '';
+                waitlistStatus.classList.remove('hide', 'waitlist-fade');
+            }, 5800);
+
     });
 }
 
