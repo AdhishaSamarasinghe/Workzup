@@ -652,6 +652,7 @@ main {
   display: grid;
   gap: 1.25rem;
   grid-template-columns: repeat(3, 1fr);
+  margin-top: 50px;
 }
 
 .team-card {
