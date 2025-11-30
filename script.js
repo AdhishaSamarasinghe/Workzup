@@ -278,3 +278,113 @@ if(waitlistForm){
   observer.observe(statsSection);
 })();
 
+
+// New about part
+/* ===== script.js additions for About page interactivity ===== */
+/* If you already have script.js, append this to the bottom. */
+
+document.addEventListener('DOMContentLoaded', function () {
+  /* --------- NAV TOGGLE (minimal) --------- */
+  const navToggle = document.querySelector('.nav-toggle');
+  const siteNav = document.querySelector('.site-nav');
+  if (navToggle && siteNav) {
+    navToggle.addEventListener('click', () => {
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!expanded));
+      siteNav.classList.toggle('open');
+    });
+  }
+
+  /* --------- PARALLAX FOR BLOBS (mousemove + scroll) --------- */
+  const blobs = Array.from(document.querySelectorAll('.blob'));
+  const hero = document.querySelector('.about-hero');
+
+  function handleParallax(e) {
+    // mouse parallax
+    const rect = hero.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const mouseX = (e.clientX - cx) / rect.width;
+    const mouseY = (e.clientY - cy) / rect.height;
+
+    blobs.forEach((b, i) => {
+      const speed = parseFloat(b.dataset.speed) || (0.03 + i * 0.02);
+      const tx = -mouseX * 40 * speed;
+      const ty = -mouseY * 40 * speed;
+      b.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
+    });
+  }
+
+  if (hero) {
+    hero.addEventListener('mousemove', handleParallax);
+    // subtle scroll influence
+    window.addEventListener('scroll', () => {
+      const sh = window.scrollY;
+      blobs.forEach((b, i) => {
+        const base = (i + 1) * 6;
+        b.style.transform += ` translateY(${sh * 0.02 * (i+1)}px)`;
+      });
+    }, { passive: true });
+  }
+
+  /* --------- SCROLL REVEAL (IntersectionObserver) --------- */
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        // once visible, unobserve to avoid re-trigger
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  revealEls.forEach(el => io.observe(el));
+
+  /* --------- 3D CARD TILT (pointer move) --------- */
+  const tiltContainers = document.querySelectorAll('.card, .team-card');
+  tiltContainers.forEach(card => {
+    card.addEventListener('pointermove', (ev) => {
+      const rect = card.getBoundingClientRect();
+      const px = (ev.clientX - rect.left) / rect.width;
+      const py = (ev.clientY - rect.top) / rect.height;
+      const rx = (py - 0.5) * 6; // rotateX
+      const ry = (px - 0.5) * -8; // rotateY
+      card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(6px)`;
+    });
+    card.addEventListener('pointerleave', () => {
+      card.style.transform = '';
+    });
+  });
+
+  /* --------- COUNTER ANIMATION --------- */
+  function animateCounter(el, to) {
+    let start = 0;
+    const dur = 1400; // ms
+    const startTime = performance.now();
+    function step(now) {
+      const t = Math.min(1, (now - startTime) / dur);
+      // easeOutCubic
+      const eased = 1 - Math.pow(1 - t, 3);
+      const current = Math.floor(eased * to);
+      el.textContent = current.toLocaleString();
+      if (t < 1) requestAnimationFrame(step);
+      else el.textContent = to.toLocaleString();
+    }
+    requestAnimationFrame(step);
+  }
+
+  const counters = document.querySelectorAll('.counter');
+  const counterIO = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const to = parseInt(el.dataset.target, 10) || 0;
+        animateCounter(el, to);
+        counterIO.unobserve(el);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  counters.forEach(c => counterIO.observe(c));
+});
