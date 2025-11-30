@@ -4,25 +4,124 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>About — Workzup</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Your main styles -->
   <link rel="stylesheet" href="styles.css">
 
+  <style>
+    /* ------------------------------------------------------------
+       About Page Styles
+    ------------------------------------------------------------ */
+
+    .about-hero {
+      text-align: center;
+      padding: 5rem 1rem 3rem;
+      background: #f7fafc;
+    }
+
+    .about-hero h1 {
+      font-size: 2.8rem;
+      font-family: Poppins, Inter, sans-serif;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .about-hero p {
+      font-size: 1.1rem;
+      color: #6b7280;
+      max-width: 760px;
+      margin: auto;
+    }
+
+    .about-section {
+      width: 90%;
+      max-width: 1100px;
+      margin: 3.5rem auto;
+      text-align: center;
+    }
+
+    .about-section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      font-family: Poppins, Inter, sans-serif;
+    }
+
+    .about-section p {
+      color: #6b7280;
+      max-width: 850px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Cards / Values */
+    .grid {
+      margin-top: 2.5rem;
+      display: grid;
+      gap: 1.7rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .card {
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+      text-align: center;
+    }
+
+    .card h3 {
+      margin-bottom: 0.6rem;
+      font-weight: 600;
+    }
+
+    /* Team Cards */
+    .team-grid {
+      display: grid;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .team-card {
+      text-align: center;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .team-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+  </style>
 </head>
+
 <body>
+
+  <!-- HEADER -->
   <header class="site-header">
     <div class="container header-inner">
       <a href="Home.html">
-          <img src="Logo\logo.png" alt="Workzup" class="logo">
-        </a>
+        <img src="Logo/logo.png" alt="Workzup" class="logo">
+      </a>
+
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span class="hamburger"></span>
       </button>
+
       <nav class="site-nav">
         <ul>
           <li><a href="home.html">Home</a></li>
           <li><a href="home.html#how">How It Works</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a href="about.html" class="active">About</a></li>
           <li><a href="features.html">Features</a></li>
           <li><a href="screenshots.html">Screenshots</a></li>
           <li><a href="team.html">Team</a></li>
@@ -32,102 +131,170 @@
     </div>
   </header>
 
-  <main>
 
-    <!-- TITLE SECTION -->
-    <section class="section about-hero">
-      <div class="container">
-        <h1 class="about-title">Here's who we are<br>& what our project is about</h1>
-        <button class="btn primary about-btn">Get to know more about us</button>
-      </div>
-    </section>
-  
-    <!-- MAIN TWO-COLUMN SECTION -->
-    <section class="section">
-      <div class="container about-grid">
-  
-        <!-- LEFT CARD -->
-        <div class="about-card-left card reveal">
-          <h2>So you know a lot about Workzup,<br> but what about the team behind it?</h2>
-          <p>
-            Discover our journey, what we stand for, and the passionate team
-            building Workzup to make fast hiring simpler for everyone.
-          </p>
-  
-          <img src="Images/mascot.png" class="about-mascot" alt="Mascot">
-        </div>
-  
-        <!-- RIGHT PHOTO COLLAGE -->
-        <div class="about-collage reveal">
-          <div class="collage-grid">
-            <img src="group photos/Deveen.JPG" alt="">
-            <img src="group photos/Adhisha.JPG" alt="">
-            <img src="group photos/Dana.JPG" alt="">
-            <img src="group photos/Abhilash.JPG" alt="">
-            <img src="group photos/Chamalsha.JPG" alt="">
-            <img src="group photos/Abhilash.JPG" alt="">
-          </div>
-        </div>
-  
-      </div>
-    </section>
-  
-    <!-- ABOUT TEXT BLOCK -->
-    <section class="section about-desc">
-      <div class="container about-text">
-        <p>
-          We are a team of students from <strong>IIT</strong> and the
-          <strong>University of Westminster</strong>, working together to build solutions that matter.
-        </p>
-  
-        <p>
-          <strong>Workzup</strong> is our answer to the challenges in fast, short-term hiring —
-          helping people connect with work instantly.
-        </p>
-  
-        <p>
-          Proudly developed under the guidance of <strong>Mr. Alain Jiehfeng Hsu</strong> and our dedicated module team.
-        </p>
-      </div>
-  
-      <!-- TEAM AVATAR STRIP -->
-      <div class="team-avatars">
-        <img src="group photos/Abhilash.JPG">
-        <img src="group photos/Adhisha.JPG">
-        <img src="group photos/Chamalsha.JPG">
-        <img src="group photos/Dana.JPG">
-        <img src="group photos/Deveen.JPG">
-      </div>
-  
-      <p class="about-final">We're striving to create a tool that makes a real difference.</p>
-    </section>
-  
-  </main>
-  
+  <!-- HERO -->
+  <section class="about-hero">
+    <h1>About WorkzUp</h1>
+    <p>
+      WorkzUp is an AI-powered short-term job platform designed to connect Sri Lankan talent
+      with fast, flexible opportunities — safely and efficiently.
+    </p>
+  </section>
 
-<footer class="site-footer">
+
+  <!-- STORY -->
+  <section class="about-section">
+    <h2>Our Story</h2>
+    <p>
+      WorkzUp was created to solve a rising issue in Sri Lanka’s fast-growing gig economy:
+      there was no secure, structured, and modern platform for short-term jobs. Workers had
+      trouble finding reliable opportunities, and employers struggled to find trusted talent.
+      Our team set out to build a platform that bridges this gap through technology, AI, and a
+      user-first approach.
+    </p>
+  </section>
+
+
+  <!-- MISSION -->
+  <section class="about-section">
+    <h2>Our Mission</h2>
+    <p>
+      To empower individuals by giving them fair, fast, and secure access to job opportunities
+      while helping businesses connect with the right talent effortlessly.
+    </p>
+  </section>
+
+
+  <!-- VISION -->
+  <section class="about-section">
+    <h2>Our Vision</h2>
+    <p>
+      To become Sri Lanka’s leading short-term job platform — improving lives, supporting
+      businesses, and elevating the future of work for everyone.
+    </p>
+  </section>
+
+
+  <!-- CORE VALUES -->
+  <section class="about-section">
+    <h2>Our Core Values</h2>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Transparency</h3>
+        <p>Clear, honest communication among all users.</p>
+      </div>
+      <div class="card">
+        <h3>Security</h3>
+        <p>Your safety, trust, and data protection come first.</p>
+      </div>
+      <div class="card">
+        <h3>Equal Opportunity</h3>
+        <p>WorkzUp supports fair and unbiased access for everyone.</p>
+      </div>
+      <div class="card">
+        <h3>Innovation</h3>
+        <p>Using AI and modern tech to improve the way we work.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- WHAT WE OFFER -->
+  <section class="about-section">
+    <h2>What We Offer</h2>
+
+    <div class="grid">
+      <div class="card">
+        <h3>AI Job Matching</h3>
+        <p>Get paired with jobs that fit your skills instantly.</p>
+      </div>
+      <div class="card">
+        <h3>Verified Users</h3>
+        <p>Ensuring trust between workers and employers.</p>
+      </div>
+      <div class="card">
+        <h3>Secure Messaging</h3>
+        <p>Communicate safely inside the platform.</p>
+      </div>
+      <div class="card">
+        <h3>Job Tracking</h3>
+        <p>Track your applications and updates in real time.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- TEAM -->
+  <section class="about-section">
+    <h2>Meet Our Team</h2>
+
+    <div class="team-grid">
+      <div class="team-card">
+        <img src="Team-Pics/adhisha-pic.png" alt="">
+        <h3>Team Member 1</h3>
+        <p>Developer</p>
+      </div>
+
+      <div class="team-card">
+        <img src="Team-Pics/dananjaya-pic.png" alt="">
+        <h3>Team Member 2</h3>
+        <p>UI/UX Designer</p>
+      </div>
+
+      <div class="team-card">
+        <img src="Team-Pics/ishara-pic.png" alt="">
+        <h3>Team Member 3</h3>
+        <p>Research & Documentation</p>
+      </div>
+
+      <div class="team-card">
+        <img src="Team-Pics/abhilash-pic.png" alt="">
+        <h3>Team Member 4</h3>
+        <p>Research & Documentation</p>
+      </div>
+
+      <div class="team-card">
+        <img src="Team-Pics/chamalsha-pic.png" alt="">
+        <h3>Team Member 5</h3>
+        <p>Research & Documentation</p>
+      </div>
+
+      <div class="team-card">
+        <img src="Team-Pics/deveen-pic.png" alt="">
+        <h3>Team Member 6</h3>
+        <p>Research & Documentation</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
     <div class="container footer-inner">
       <p>© 2025 <strong>Workzup</strong> SDGP CS-50. All rights reserved.</p>
+
       <nav>
         <a href="index.html#privacy">Privacy</a>
         <a href="index.html#terms">Terms</a>
       </nav>
+
       <div class="social">
-        <a href="https://twitter.com/" target="_blank" rel="noopener" aria-label="Twitter">
-          <img src="Icons\twitter.png" alt="Twitter" class="social-icon" width="36px"; height="36px">
+        <a href="https://twitter.com/" target="_blank" aria-label="Twitter">
+          <img src="Icons/twitter.png" alt="Twitter" class="social-icon" width="36">
         </a>
 
-        <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <img src="Icons\linkedin.png" alt="LinkedIn" class="social-icon" width="36px"; height="36px">
+        <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn">
+          <img src="Icons/linkedin.png" alt="LinkedIn" class="social-icon" width="36">
         </a>
 
-        <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
-          <img src="Icons\instagram.png" alt="Facebook" class="social-icon" width="36px"; height="36px">
+        <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook">
+          <img src="Icons/instagram.png" alt="Instagram" class="social-icon" width="36">
         </a>
       </div>
-
     </div>
   </footer>
+
 
   <script src="script.js"></script>
 </body>
