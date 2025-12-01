@@ -53,6 +53,21 @@ main {
   padding: 2rem;
 }
 
+.section-team {
+  margin-top: -20px ;
+}
+.section-features  {
+  margin-top: -20px ;
+}
+
+.section-terms {
+  margin-top: -20px ;
+}
+
+.section-contact {
+  margin-top: -20px ;
+}
+
 .reveal,
 [data-reveal] {
   opacity: 0;
@@ -671,6 +686,11 @@ main {
   background: var(--card);
   border-radius: var(--radius);
   box-shadow: 0 6px 20px rgba(2, 6, 23, 0.04);
+}
+
+/* Add a touch more vertical spacing between stacked cards on the Terms page */
+main#main .card {
+  margin-bottom: 1.25rem;
 }
 
 .card:hover,
