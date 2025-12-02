@@ -11,7 +11,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="home-page">
   
     <header class="site-header">
       <div class="container header-inner">
@@ -41,47 +41,35 @@
 
     <main>
       
-      <section class="hero" data-reveal>
-        <div class="container hero-inner">
-        <div class="hero-media reveal">
-          <div class="mockup">
-              <video
-                id="heroVideo"  src="Video/Home.mp4"
-                alt="Workzup video preview"
-                autoplay
-                loop
-                muted
-                playsinline
-              ></video>
-            </div>
-          </div>
-          <div class="hero-copy reveal">
-            <h1>
-              Workzup <br>
-            <span id="animated-text" class="typing-text"></span> 
+      <section class="hero hero-video-bg" data-reveal>
 
-            </h1>
-            <p class="lead">
-              Connects job seekers with employers who need reliable short-term
-              workers same-day hires, simple bookings.
-            </p>
-            <form id="waitlistForm" class="waitlist-form">
-                <div class="input-group">
-                    <input
-                        type="email"
-                        id="waitlistEmail"
-                        name="email"
-                        placeholder="Join the waitlist"
-                        required
-                    />
-                    <button type="submit" aria-label="Join waitlist">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                    </button>
-                </div>
-                <p id="waitlistStatus" class="form-status"></p>
-            </form>
-        </div>
+
+          <video class="bg-video" autoplay muted loop playsinline>
+              <source src="Video/Home.mp4" type="video/mp4">
+          </video>
+          <div class="video-overlay"></div>
+          <div class="hero-content">
+              <h1>
+                  Workzup <br>
+                  <span id="animated-text" class="typing-text"></span>
+              </h1>
+
+              <p class="lead">
+                  Connects job seekers with employers who need reliable <br>short-term
+                  workers same-day hires, simple bookings.
+              </p>
+              <form id="waitlistForm" class="waitlist-form">
+                  <div class="input-group">
+                      <input type="email" id="waitlistEmail" name="email" placeholder="Join the waitlist" required />
+                      <button type="submit">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                      </button>
+                  </div>
+                  <p id="waitlistStatus" class="form-status"></p>
+              </form>
+          </div>
       </section>
+
       <section class="container widgets-grid-wrapper" data-reveal>
       <section id="features" class="section">
         <h2 class="section-title">Key features</h2>

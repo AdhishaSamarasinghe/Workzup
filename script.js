@@ -278,6 +278,18 @@ if(waitlistForm){
   observer.observe(statsSection);
 })();
 
+document.addEventListener("DOMContentLoaded", () => {
+    const header = document.querySelector(".site-header");
+    if (!document.body.classList.contains("home-page")) return;
+    header.classList.add("transparent");
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 10) {
+            header.classList.remove("transparent");
+        } else {
+            header.classList.add("transparent");
+        }
+    });
+});
 
 // New about part
 /* ===== script.js additions for About page interactivity ===== */
