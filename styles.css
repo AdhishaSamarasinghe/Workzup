@@ -38,7 +38,6 @@ body {
   display: flex;
   flex-direction: column;
   font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
-  background: var(--bg);
   color: #111827;
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
