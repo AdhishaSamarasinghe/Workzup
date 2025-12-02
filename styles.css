@@ -426,7 +426,16 @@ main {
     height: 24px;
 }
 
+.waitlist-arrow {
+    animation: arrow-wiggle 1s ease-in-out infinite;
+    transform-origin: center;
+}
 
+@keyframes arrow-wiggle {
+    0%   { transform: translateX(0); }
+    50%  { transform: translateX(4px); }
+    100% { transform: translateX(0); }
+}
 .latest-jobs-card {
   margin-top: 265px;
   margin-left: 30px;
