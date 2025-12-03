@@ -65,7 +65,7 @@ main {
 }
 
 .section-contact {
-  margin-top: -20px ;
+  margin-top: -70px ;
 }
 
 .reveal,
@@ -357,6 +357,7 @@ main {
   text-decoration: none;
   font-weight: 600;
   transition: transform 0.18s, box-shadow 0.18s;
+  border: none;
 }
 
 .btn.primary {
@@ -1057,60 +1058,160 @@ main#main .card {
 
 
 /* ------------------------------------------------------------
-   Contact Section
+   Contact Section Layout
 ------------------------------------------------------------ */
-.contact-grid {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: 1fr 1fr;
+
+.section-contact {
+  padding: 4rem 0;
 }
 
+.section-title-reveal {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+/* Main Grid (Perfect Alignment) */
 .contact-grid {
   display: grid;
-  gap: 1rem;
   grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
 }
+
+/* Cards */
+.card {
+  background: var(--card);
+  padding: 1.6rem;
+  border-radius: var(--radius);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+/* Contact Info */
+.contact-info h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.meta {
+  padding: 0;
+  list-style: none;
+  margin: 1rem 0 1.5rem;
+}
+.meta li {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+/* Support Box */
+.contact-box {
+  background: linear-gradient(90deg, rgba(107,140,255,0.06), rgba(139,227,199,0.05));
+  padding: 1rem;
+  border-radius: 10px;
+  margin-top: 1.2rem;
+}
+
+/* Map */
+.map-embed {
+  margin-top: 1.2rem;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.map-embed iframe {
+  width: 100%;
+  height: 260px;
+  border: 0;
+}
+
+/* Subtitle */
+.section-subtitle {
+  text-align: center;
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0.5rem auto 1.5rem;
+  line-height: 1.5;
+}
+
+/* Highlight Box */
+.contact-highlight {
+  text-align: center;
+  background: linear-gradient(90deg, rgba(107,140,255,0.08), rgba(139,227,199,0.06));
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  margin: 0 auto 2.5rem;
+  font-size: 1rem;
+  color: var(--muted);
+  max-width: 650px;
+  border: 1px solid rgba(15,23,42,0.06);
+  box-shadow: 0 4px 12px rgba(2,6,23,0.05);
+}
+
+
+/* ------------------------------------------------------------
+   Form Styling
+------------------------------------------------------------ */
 
 .contact-form label {
-  margin-bottom: 0.75rem;
   display: block;
+  margin-bottom: 1rem;
 }
+
+.contact-form span {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
 .contact-form input,
 .contact-form textarea,
 .contact-form select {
   width: 100%;
-  padding: 0.7rem;
+  padding: 0.75rem;
   border-radius: 10px;
-  border: 1px solid rgba(15, 23, 42, 0.06);
-  background: var(--card);
   font-size: 0.95rem;
+  background: var(--card);
+  border: 1px solid rgba(15, 23, 42, 0.1);
 }
-.contact-form textarea { min-height: 140px }
+
+.contact-form textarea {
+  min-height: 140px;
+}
 
 .form-actions {
   display: flex;
-  gap: 0.75rem;
+  gap: 1rem;
   align-items: center;
+  margin-top: 0.5rem;
 }
+
 .form-status {
-  color: var(--muted);
   font-size: 0.95rem;
+  color: var(--muted);
 }
 
-/* Checkbox label */
-.checkbox-label{display:flex;gap:0.6rem;align-items:flex-start;font-size:0.95rem}
-.checkbox-label input[type="checkbox"]{margin-top:4px}
+/* Form status colors */
+.form-status.error {
+  color: #e11d48;
+}
+.form-status.success {
+  color: green;
+}
 
-/* Support/info box and map */
-.contact-box{background:linear-gradient(90deg,rgba(107,140,255,0.06),rgba(139,227,199,0.03));padding:0.8rem;border-radius:10px;margin-top:1rem}
-.contact-box h5{margin:0 0 0.45rem;font-size:1rem}
-.contact-box .small{font-size:0.85rem;color:var(--muted)}
-.map-embed{margin-top:1rem;border-radius:10px;overflow:hidden;border:1px solid rgba(15,23,42,0.04);box-shadow:0 8px 20px rgba(2,6,23,0.04)}
-.map-embed iframe{display:block;width:100%;height:280px;border:0}
+/* ------------------------------------------------------------
+   RESPONSIVE
+------------------------------------------------------------ */
 
-/* Small form status color helpers */
-.form-status.error{color:#e11d48}
-.form-status.success{color:green}
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .map-embed iframe {
+    height: 240px;
+  }
+}
 
 /* ------------------------------------------------------------
    Footer

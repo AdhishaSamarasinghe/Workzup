@@ -341,21 +341,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
   revealEls.forEach(el => io.observe(el));
 
-  /* --------- 3D CARD TILT (pointer move) --------- */
+/* --------- 3D CARD TILT (pointer move) --------- */
+if (!document.body.classList.contains('contact-page')) {
   const tiltContainers = document.querySelectorAll('.card, .team-card');
   tiltContainers.forEach(card => {
     card.addEventListener('pointermove', (ev) => {
       const rect = card.getBoundingClientRect();
       const px = (ev.clientX - rect.left) / rect.width;
       const py = (ev.clientY - rect.top) / rect.height;
-      const rx = (py - 0.5) * 6; // rotateX
-      const ry = (px - 0.5) * -8; // rotateY
-      card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(6px)`;
+      const rx = (py - 0.5) * 6;
+      const ry = (px - 0.5) * -8;
+      card.style.transform = 
+        `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(6px)`;
     });
     card.addEventListener('pointerleave', () => {
       card.style.transform = '';
     });
   });
+}
+
 
   /* --------- COUNTER ANIMATION --------- */
   function animateCounter(el, to) {
