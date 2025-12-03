@@ -11,8 +11,8 @@
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a href="Home.html">
-          <img src="Logo\logo.png" alt="Workzup" class="logo">
+      <a href="home.html">
+          <img src="Logo/logo.png" alt="Workzup" class="logo">
         </a>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span class="hamburger"></span>
@@ -56,29 +56,29 @@
               <iframe
                 title="Workzup office location"
                 src="https://www.google.com/maps?q=45+Tech+Lane,+Colombo,+Sri+Lanka&output=embed"
-                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                allowfullscreen loading="lazy"></iframe>
             </div>
           </div>
 
-          <form id="contactForm" class="card contact-form reveal" novalidate data-endpoint="REPLACE_WITH_FORMSPREE_ENDPOINT">
+          <form id="contactForm" class="card contact-form reveal" novalidate data-endpoint="REPLACE_WITH_FORMSPREE_ENDPOINT" role="form">
             <label>
               <span>Name</span>
-              <input type="text" name="name" placeholder="Your full name" required>
+              <input type="text" name="name" aria-label="Full name" placeholder="Your full name" required>
             </label>
 
             <label>
               <span>Company (optional)</span>
-              <input type="text" name="company" placeholder="Company or organization">
+              <input type="text" name="company" aria-label="Company (optional)" placeholder="Company or organization">
             </label>
 
             <label>
               <span>Email</span>
-              <input type="email" name="email" placeholder="you@company.com" required>
+              <input type="email" name="email" aria-label="Email address" placeholder="you@company.com" required>
             </label>
 
             <label>
               <span>Subject</span>
-              <select name="subject" required>
+              <select name="subject" aria-label="Subject" required>
                 <option value="general">General inquiry</option>
                 <option value="partnership">Partnership</option>
                 <option value="support">Support / Bug report</option>
@@ -89,12 +89,7 @@
 
             <label>
               <span>Message</span>
-              <textarea name="message" rows="6" placeholder="Tell us how we can help" required></textarea>
-            </label>
-
-            <label class="checkbox-label">
-              <span>I agree to the processing of my data in accordance with the <a href="#">privacy policy</a>.</span>
-              <input type="checkbox" name="consent" required>
+              <textarea name="message" aria-label="Message" rows="6" placeholder="Tell us how we can help" required></textarea>
             </label>
 
             <div class="form-actions">
@@ -112,19 +107,19 @@
       <p>© 2025 <strong>Workzup</strong> SDGP CS-50. All rights reserved.</p>
       <nav>
         <a href="index.html#privacy">Privacy</a>
-        <a href="index.html#terms">Terms</a>
+        <a href="terms.html">Terms</a>
       </nav>
       <div class="social">
         <a href="https://twitter.com/" target="_blank" rel="noopener" aria-label="Twitter">
-          <img src="Icons\twitter.png" alt="Twitter" class="social-icon" width="36px"; height="36px">
+          <img src="Icons/twitter.png" alt="Twitter" class="social-icon" width="36" height="36">
         </a>
 
         <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <img src="Icons\linkedin.png" alt="LinkedIn" class="social-icon" width="36px"; height="36px">
+          <img src="Icons/linkedin.png" alt="LinkedIn" class="social-icon" width="36" height="36">
         </a>
 
-        <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
-          <img src="Icons\instagram.png" alt="Facebook" class="social-icon" width="36px"; height="36px">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+          <img src="Icons/instagram.png" alt="Instagram" class="social-icon" width="36" height="36">
         </a>
       </div>
 

@@ -389,9 +389,7 @@ document.addEventListener('DOMContentLoaded', function () {
   counters.forEach(c => counterIO.observe(c));
 });
 
-/* ------------------------------------------------------------
-   🔥 FEATURE PAGE ANIMATION LOGIC (ADD ONLY)
------------------------------------------------------------- */
+
 
 // Scroll Reveal Observer
 const revealItems = document.querySelectorAll(".reveal");
@@ -417,9 +415,7 @@ document.querySelectorAll(".feature-card").forEach(card => {
   });
 });
 
-/* ------------------------------------------------------------
-   🔥 ADVANCED FEATURE PAGE ANIMATION PACK (ADD ONLY)
------------------------------------------------------------- */
+
 
 /* 1. BOUNCE-IN ENTRANCE ANIMATION */
 function addBounceAnimation() {
