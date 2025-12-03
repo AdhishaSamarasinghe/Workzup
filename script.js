@@ -400,6 +400,35 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 revealItems.forEach(el => io.observe(el));
 
+document.addEventListener("DOMContentLoaded", () => {
+    const header = document.querySelector(".site-header");
+    const isHomePage = document.body.classList.contains("home-page");
+
+    if (!isHomePage || !header) return;
+
+    // Make navbar transparent at start
+    header.classList.add("transparent");
+
+    let firstScrollTriggered = false;
+
+    window.addEventListener("scroll", () => {
+        const scrollY = window.scrollY;
+
+        // First scroll → remove transparency
+        if (scrollY > 80 && !firstScrollTriggered) {
+            firstScrollTriggered = true;
+            header.classList.remove("transparent");
+        }
+
+        // Scroll back to top → become transparent again
+        if (scrollY <= 20) {
+            firstScrollTriggered = false;
+            header.classList.add("transparent");
+        }
+    });
+});
+
+
 // 3D Parallax Tilt
 document.querySelectorAll(".feature-card").forEach(card => {
   card.addEventListener("mousemove", e => {
