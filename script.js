@@ -388,3 +388,159 @@ document.addEventListener('DOMContentLoaded', function () {
 
   counters.forEach(c => counterIO.observe(c));
 });
+
+/* ------------------------------------------------------------
+   🔥 FEATURE PAGE ANIMATION LOGIC (ADD ONLY)
+------------------------------------------------------------ */
+
+// Scroll Reveal Observer
+const revealItems = document.querySelectorAll(".reveal");
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add("visible");
+  });
+}, { threshold: 0.15 });
+revealItems.forEach(el => io.observe(el));
+
+// 3D Parallax Tilt
+document.querySelectorAll(".feature-card").forEach(card => {
+  card.addEventListener("mousemove", e => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width/2;
+    const y = e.clientY - rect.top - rect.height/2;
+    card.style.transform =
+      `rotateX(${-y/20}deg) rotateY(${x/20}deg) scale(1.05)`;
+  });
+
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "rotateX(0) rotateY(0) scale(1)";
+  });
+});
+
+/* ------------------------------------------------------------
+   🔥 ADVANCED FEATURE PAGE ANIMATION PACK (ADD ONLY)
+------------------------------------------------------------ */
+
+/* 1. BOUNCE-IN ENTRANCE ANIMATION */
+function addBounceAnimation() {
+  document.querySelectorAll(
+    ".feature-card, .routine-card, .main-feature-card, .barrier-card"
+  ).forEach((card, i) => {
+    card.style.animation = `bounceIn 0.9s ease forwards`;
+    card.style.animationDelay = `${i * 0.12}s`;
+  });
+}
+
+window.addEventListener("load", addBounceAnimation);
+
+
+/* 2. STAGGERED SCROLL REVEAL */
+const staggerObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+
+    const cards = entry.target.querySelectorAll(
+      ".feature-card, .routine-card, .main-feature-card, .barrier-card"
+    );
+
+    cards.forEach((card, index) => {
+      card.classList.add("visible");
+      card.style.transitionDelay = index * 120 + "ms";
+    });
+
+    staggerObserver.unobserve(entry.target);
+  });
+}, { threshold: 0.25 });
+
+document
+  .querySelectorAll(".features, .routine, .main-features, .barriers")
+  .forEach((section) => staggerObserver.observe(section));
+
+
+/* 3. PREMIUM PARALLAX TILT EFFECT */
+document.querySelectorAll(
+  ".feature-card, .routine-card, .main-feature-card, .barrier-card"
+).forEach((card) => {
+  card.addEventListener("mousemove", (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+    card.style.transform = `
+      perspective(900px)
+      rotateX(${y * -10}deg)
+      rotateY(${x * 10}deg)
+      translateZ(8px)
+      scale(1.03)
+    `;
+  });
+
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = `
+      perspective(900px)
+      rotateX(0)
+      rotateY(0)
+      translateZ(0)
+      scale(1)
+    `;
+  });
+});
+
+
+/* 4. HORIZONTAL SWIPE-TO-SCROLL (MOBILE ONLY) */
+function enableHorizontalSwipe(selector) {
+  const container = document.querySelector(selector);
+  if (!container) return;
+
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  container.addEventListener("mousedown", (e) => {
+    isDown = true;
+    startX = e.pageX - container.offsetLeft;
+    scrollLeft = container.scrollLeft;
+  });
+
+  container.addEventListener("mouseleave", () => (isDown = false));
+  container.addEventListener("mouseup", () => (isDown = false));
+
+  container.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - container.offsetLeft;
+    const walk = (x - startX) * 1.3;
+    container.scrollLeft = scrollLeft - walk;
+  });
+
+  // Mobile touch events
+  container.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].pageX;
+    scrollLeft = container.scrollLeft;
+  });
+
+  container.addEventListener("touchmove", (e) => {
+    const x = e.touches[0].pageX;
+    const walk = (x - startX) * 1.2;
+    container.scrollLeft = scrollLeft - walk;
+  });
+}
+
+/* Apply swipe scroll to each grid */
+enableHorizontalSwipe(".features-grid");
+enableHorizontalSwipe(".routine-grid");
+enableHorizontalSwipe(".main-features-grid");
+enableHorizontalSwipe(".barriers-grid");
+
+
+/* 5. BOUNCE KEYFRAME (ADD) */
+const style = document.createElement("style");
+style.textContent = `
+@keyframes bounceIn {
+  0% { opacity: 0; transform: scale(0.85) translateY(20px); }
+  60% { opacity: 1; transform: scale(1.03) translateY(-6px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+`;
+document.head.appendChild(style);
+
