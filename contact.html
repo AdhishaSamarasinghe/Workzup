@@ -7,13 +7,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    emailjs.init("slVy6s-sVwMeXEknq"); 
+  </script>
 </head>
-<body>
+<body class="contact-page">
   <header class="site-header">
     <div class="container header-inner">
       <a href="home.html">
-          <img src="Logo/logo.png" alt="Workzup" class="logo">
-        </a>
+        <img src="Logo/logo.png" alt="Workzup" class="logo">
+      </a>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span class="hamburger"></span>
       </button>
@@ -34,11 +38,20 @@
   <main>
     <section class="section-contact">
       <div class="container">
-        <h2 class="section-title reveal">Contact</h2>
+        <h2 class="section-title-reveal">Contact</h2>
+        <p class="section-subtitle">
+          We'd love to hear from you. Reach out for support, partnerships, or general inquiries.
+        </p>
+        <div class="contact-highlight">
+          Need help fast? Our support team responds within 24 hours on weekdays.
+        </div>
+
         <div class="contact-grid">
+          <!-- Left Side: Info -->
           <div class="card contact-info reveal">
             <h4>Get in touch</h4>
-            <p>For partnerships, support, or academic queries, send us a message — we usually reply within 1–2 business days.</p>
+            <p>For partnerships, support, or academic queries, send us a message we usually reply within 1–2 business days.</p>
+
             <ul class="meta">
               <li><strong>Email:</strong> <a href="mailto:workzup.lk@gmail.com">workzup.lk@gmail.com</a></li>
               <li><strong>Phone:</strong> <a href="tel:+9472371345">+94 72 371 345</a></li>
@@ -48,48 +61,50 @@
 
             <div class="contact-box">
               <h5>Support</h5>
-              <p>For bug reports or urgent platform issues, include "URGENT" in the subject line so we can prioritize it.</p>
-              <p class="small">You can also reach our support Slack at <code>@workzup-support</code> (invitation required).</p>
+              <p>If you're reporting a bug or urgent issue, add "URGENT" to your subject line.</p>
+              <p class="small">For quick help, message us on Slack at <code>@workzup-support</code>.</p>
             </div>
 
             <div class="map-embed">
               <iframe
                 title="Workzup office location"
                 src="https://www.google.com/maps?q=45+Tech+Lane,+Colombo,+Sri+Lanka&output=embed"
-                allowfullscreen loading="lazy"></iframe>
+                allowfullscreen loading="lazy">
+              </iframe>
             </div>
           </div>
 
-          <form id="contactForm" class="card contact-form reveal" novalidate data-endpoint="REPLACE_WITH_FORMSPREE_ENDPOINT" role="form">
+          <!-- Right Side: Form -->
+          <form id="contact-form" class="card contact-form reveal" novalidate>
             <label>
               <span>Name</span>
-              <input type="text" name="name" aria-label="Full name" placeholder="Your full name" required>
+              <input type="text" id="name" name="user_name" placeholder="Your full name" required>
             </label>
 
             <label>
               <span>Company (optional)</span>
-              <input type="text" name="company" aria-label="Company (optional)" placeholder="Company or organization">
+              <input type="text" id="company" name="company" placeholder="Company or organization">
             </label>
 
             <label>
               <span>Email</span>
-              <input type="email" name="email" aria-label="Email address" placeholder="you@company.com" required>
+              <input type="email" id="email" name="user_email" placeholder="you@company.com" required>
             </label>
 
             <label>
               <span>Subject</span>
-              <select name="subject" aria-label="Subject" required>
-                <option value="general">General inquiry</option>
-                <option value="partnership">Partnership</option>
-                <option value="support">Support / Bug report</option>
-                <option value="press">Press / Media</option>
-                <option value="other">Other</option>
+              <select id="subject" name="subject" required>
+                <option value="General Inquiry">General inquiry</option>
+                <option value="Partnership">Partnership</option>
+                <option value="Support">Support / Bug report</option>
+                <option value="Press">Press / Media</option>
+                <option value="Other">Other</option>
               </select>
             </label>
 
             <label>
               <span>Message</span>
-              <textarea name="message" aria-label="Message" rows="6" placeholder="Tell us how we can help" required></textarea>
+              <textarea id="message" name="message" rows="6" placeholder="Tell us how we can help" required></textarea>
             </label>
 
             <div class="form-actions">
@@ -97,12 +112,13 @@
               <div id="formStatus" class="form-status" aria-live="polite"></div>
             </div>
           </form>
+
         </div>
       </div>
     </section>
   </main>
 
-<footer class="site-footer">
+  <footer class="site-footer">
     <div class="container footer-inner">
       <p>© 2025 <strong>Workzup</strong> SDGP CS-50. All rights reserved.</p>
       <nav>
@@ -113,18 +129,42 @@
         <a href="https://twitter.com/" target="_blank" rel="noopener" aria-label="Twitter">
           <img src="Icons/twitter.png" alt="Twitter" class="social-icon" width="36" height="36">
         </a>
-
         <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
           <img src="Icons/linkedin.png" alt="LinkedIn" class="social-icon" width="36" height="36">
         </a>
-
         <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
           <img src="Icons/instagram.png" alt="Instagram" class="social-icon" width="36" height="36">
         </a>
       </div>
-
     </div>
   </footer>
+
+  <!-- EmailJS Script -->
+  <script>
+    document.getElementById("contact-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const formStatus = document.getElementById("formStatus");
+
+      emailjs.send("service_gog15ny", "template_5ozjs9l", {
+        name: document.getElementById("name").value,
+        company: document.getElementById("company").value,
+        email: document.getElementById("email").value,
+        subject: document.getElementById("subject").value,
+        message: document.getElementById("message").value
+      })
+      .then(() => {
+        formStatus.style.color = "green";
+        formStatus.textContent = "Message sent successfully!";
+        this.reset();
+      })
+      .catch((error) => {
+        console.error(error);
+        formStatus.style.color = "red";
+        formStatus.textContent = "Failed to send message. Please try again.";
+      });
+    });
+  </script>
 
   <script src="script.js"></script>
 </body>
