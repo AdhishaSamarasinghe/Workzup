@@ -212,6 +212,7 @@ main {
     padding: 0;
     perspective: 1200px;
     overflow: hidden;
+    
 }
 
 .bg-video {
@@ -264,6 +265,9 @@ main {
     animation: heroFadeUp 1.2s ease-out forwards;
     transition: opacity 0.3s ease-out, transform 0.3s ease-out;
     will-change: opacity, transform;
+    text-align: center ;
+    align-items: center;
+    margin: 0 auto;
 }
 .hero-content.scrolled {
     opacity: 0;
@@ -303,6 +307,9 @@ main {
     margin: 14px 0 34px;
     color: rgba(255,255,255,0.88);
     text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    text-align: center ;
+    margin-left: auto ;
+    margin-right: auto
 }
 
 
@@ -314,6 +321,8 @@ main {
     background: rgba(255,255,255,0.95);
     backdrop-filter: blur(8px);
     box-shadow: 0 10px 45px rgba(0,0,0,0.28);
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero-content .input-group input {
