@@ -580,6 +580,7 @@ main {
   margin-top:6px
 }
 
+
 .features-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
