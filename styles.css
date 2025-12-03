@@ -776,8 +776,8 @@ main {
 }
 
 #waitlistStatus {
-  font-size: 0.85rem;
-  margin-left: 30px;
+  font-size: 1.1rem;
+  margin-left: 150px;
   min-height: 20px; 
   display: flex;    
   align-items: center;
