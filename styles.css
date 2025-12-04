@@ -1727,3 +1727,40 @@ main#main .card {
   transform-style: preserve-3d;
   backface-visibility: hidden;
 }
+
+ /*Core Features layout – Center second row*/
+.section-features .features-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  justify-content: center;
+}
+
+
+.section-features .feature-card {
+  flex: 0 1 320px;
+}
+
+/*Routine killer layout - Center secound row*/
+.section.routine .routine-grid {
+  display: flex;              
+  flex-wrap: wrap;            
+  gap: 28px;                  
+  justify-content: center; 
+}
+
+.section.routine .routine-card {
+  flex: 0 1 320px;            
+}
+
+/*Removing Barriers layout - Center second row */
+.section.barriers .barriers-grid {
+  display: flex;              
+  flex-wrap: wrap;
+  gap: 28px;
+  justify-content: center;   
+}
+
+.section.barriers .barrier-card {
+  flex: 0 1 320px;            
+}
