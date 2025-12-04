@@ -1448,16 +1448,19 @@ main#main .card {
 
 /* GENERAL */
 .section {
-  padding: 90px 0;
+  padding: 32px 0;
 }
 
 .section-title {
   font-size: 40px;
   font-weight: 700;
-  margin-bottom: 60px;
+  margin-bottom: 32px;
   text-align: center;
   letter-spacing: -0.5px;
   color: #1a1a1a;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* GRID BASE */
@@ -1478,12 +1481,13 @@ main#main .card {
 .routine-card,
 .main-feature-card,
 .barrier-card {
-  background: #ffffff;
+  background: linear-gradient(180deg, #ffffff, #fbfdff);
   padding: 28px;
   border-radius: 12px;
   border: 1px solid #e6e6e6;
   box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-  transition: all 0.25s ease;
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease,      
 }
 
 .feature-card h4,
@@ -1513,6 +1517,7 @@ main#main .card {
   transform: translateY(-6px);
   box-shadow: 0 10px 32px rgba(0,0,0,0.12);
   border-color: whitesmoke;
+  background: linear-gradient(180deg, #ffffff, #eef2ff);
 }
 
 /* ROUTINE KILLERS GRID */
@@ -1575,15 +1580,59 @@ main#main .card {
 ------------------------------------------------------------ */
 
 /* Smooth Stagger Reveal */
-.feature-card:nth-child(1) { transition-delay: 0.1s; }
-.feature-card:nth-child(2) { transition-delay: 0.2s; }
-.feature-card:nth-child(3) { transition-delay: 0.3s; }
-.feature-card:nth-child(4) { transition-delay: 0.4s; }
-.feature-card:nth-child(5) { transition-delay: 0.5s; }
-.feature-card:nth-child(6) { transition-delay: 0.6s; }
+.feature-card:nth-child(1),
+.routine-card:nth-child(1),           
+.main-feature-card:nth-child(1),      
+.barrier-card:nth-child(1) {   
+  transition-delay: 0.1s;
+}
+
+
+.feature-card:nth-child(2),
+.routine-card:nth-child(2),           
+.main-feature-card:nth-child(2),      
+.barrier-card:nth-child(2) {        
+  transition-delay: 0.2s;
+}
+
+
+.feature-card:nth-child(3),
+.routine-card:nth-child(3),          
+.main-feature-card:nth-child(3),      
+.barrier-card:nth-child(3) {          
+  transition-delay: 0.3s;
+}
+
+
+.feature-card:nth-child(4),
+.routine-card:nth-child(4),           
+.main-feature-card:nth-child(4),      
+.barrier-card:nth-child(4) {          
+  transition-delay: 0.4s;
+}
+
+
+.feature-card:nth-child(5),
+.routine-card:nth-child(5),           
+.main-feature-card:nth-child(5),      
+.barrier-card:nth-child(5) {          
+  transition-delay: 0.5s;
+}
+
+
+.feature-card:nth-child(6),
+.routine-card:nth-child(6),           
+.main-feature-card:nth-child(6),      
+.barrier-card:nth-child(6) {          
+  transition-delay: 0.6s;
+}
+
 
 /* Floating Animation (modern gentle drift) */
-.feature-card {
+.feature-card,
+.routine-card,
+.main-feature-card,
+.barrier-card {
   animation: floatCard 7s ease-in-out infinite;
   transform-style: preserve-3d;
 }
@@ -1593,11 +1642,17 @@ main#main .card {
 }
 
 /* Gradient Shine */
-.feature-card {
+.feature-card,
+.routine-card,
+.main-feature-card,
+.barrier-card {
   position: relative;
   overflow: hidden;
 }
-.feature-card::after {
+.feature-card::after,
+.routine-card::after,
+.main-feature-card::after,
+.barrier-card::after {
   content: '';
   position: absolute;
   top: -120%;
@@ -1615,7 +1670,10 @@ main#main .card {
   transition: opacity 0.3s;
   pointer-events: none;
 }
-.feature-card:hover::after {
+.feature-card:hover::after,
+.routine-card:hover::after,
+.main-feature-card:hover::after,
+.barrier-card:hover::after {
   opacity: 1;
   animation: shineMove 0.9s forwards;
 }
@@ -1625,7 +1683,10 @@ main#main .card {
 }
 
 /* Icon/Text Glow Pulse */
-.feature-card:hover h4 {
+.feature-card:hover h4,
+.routine-card:hover h4,
+.main-feature-card:hover h4,
+.barrier-card:hover h4 {
   animation: pulseGlow 1.4s ease-out infinite;
 }
 @keyframes pulseGlow {
@@ -1635,7 +1696,10 @@ main#main .card {
 }
 
 /* Elastic Hover Bounce */
-.feature-card:hover {
+.feature-card:hover,
+.routine-card:hover,
+.main-feature-card:hover,
+.barrier-card:hover {
   transform: translateY(-10px) scale(1.03);
   transition-timing-function: cubic-bezier(0.22, 1.25, 0.32, 1);
 }
@@ -1654,7 +1718,10 @@ main#main .card {
 }
 
 /* 3D Tilt Parallax Support */
-.feature-card {
+.feature-card,
+.routine-card,
+.main-feature-card,
+.barrier-card {
   transform-style: preserve-3d;
   backface-visibility: hidden;
 }
