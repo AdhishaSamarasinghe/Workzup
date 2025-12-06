@@ -1664,7 +1664,7 @@ main#main .card {
 
     /* decorative blobs */
    .blob {
-      position: absolute;
+      position: fixed;
       border-radius: 50%;
       filter: blur(36px);
       opacity: 0.8;
@@ -1682,13 +1682,6 @@ main#main .card {
       background: radial-gradient(circle at 60% 40%, rgba(139,227,199,0.9), rgba(139,227,199,0.5) 45%, transparent 75%);
       right: -40px; top: -50px;
       animation-duration: 10s; animation-delay: .6s;
-    }
-    .blob.b3 {
-      width: 220px; height: 220px;
-      background: linear-gradient(135deg, rgba(107,140,255,0.6), rgba(139,227,199,0.6));
-      left: 10%; bottom: -80px;
-      filter: blur(40px); opacity: 0.5;
-      animation-duration: 12s; animation-delay: .9s;
     }
 
     @keyframes floaty {
@@ -1709,6 +1702,5 @@ main#main .card {
         /*
           <div class="blob b1"></div>
           <div class="blob b2"></div>
-          <div class="blob b3"></div>
           
         */
