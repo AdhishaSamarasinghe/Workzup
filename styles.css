@@ -1337,11 +1337,105 @@ main#main .card {
 /* ------------------------------------------------------------
    ABOUT PAGE
 */
+  /* --- HERO SECTION --- */
+    
+  .about-hero {
+    position: relative;
+    overflow: visible;
+    padding: 6rem 0 4rem;
+    text-align:center;
+    background: linear-gradient(180deg, rgba(107,140,255,0.06), rgba(139,227,199,0.02));
+  }
+
+  .hero-inner { position: relative; z-index: 5; margin: 0 auto; max-width: 960px; }
+
+  .about-hero h1,
+  .about-hero p {
+    opacity: 0;
+    transform: translateY(22px);
+    animation: heroFadeUp 1.2s ease-out forwards;
+  }
+  .about-hero p { animation-delay: .25s; }
+
+  @keyframes heroFadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
 
 
+    /* --- CONTENT --- */
+    section.light { padding: 4rem 0; }
+
+    .about-section {
+      text-align: center;
+      padding: 3rem 0;
+      opacity: 0;
+      transform: translateY(26px);
+      will-change: opacity, transform;
+      transition: all .8s ease;
+    }
+
+    .about-section.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .about-section h2 {
+      font-family: "Poppins", sans-serif;
+      font-size: 1.7rem;
+      margin: 0 0 0.6rem;
+      color: #0b1220;
+    }
+
+    .about-section p {
+      margin: 0 auto;
+      max-width: 900px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .about-grid {
+      margin-top: 2.2rem;
+      display: grid;
+      gap: 1.6rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
 
 
-
+    /* ————————————————
+       PREMIUM PHOTO COLLAGE
+       ———————————————— */
+       .photo-collage {
+        margin-top: 3rem;
+        display: grid;
+        gap: 1.4rem;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        justify-items: center;
+      }
+  
+      .photo-box {
+        width: 100%;
+        max-width: 320px;
+        aspect-ratio: 4 / 5;
+        border-radius: 18px;
+        overflow: hidden;
+        position: relative;
+        background: #fff;
+        box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+        transform: translateY(20px);
+        opacity: 0;
+        transition: 0.9s ease;
+      }
+  
+      .photo-box.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+  
+      .photo-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
 /* ------------------------------------------------------------
    FEATURE PAGE — UPGRADED PROFESSIONAL UI
 ------------------------------------------------------------ */
